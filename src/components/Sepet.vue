@@ -1,5 +1,3 @@
 <template>
-    <div>
-        Sepet
-    </div>
+  <div>Sepet</div>
 </template>

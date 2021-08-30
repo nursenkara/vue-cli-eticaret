@@ -11,8 +11,8 @@
         <input type="search" class="form-control" placeholder="Ara..." aria-label="Ara" />
       </form>
       <div class="text-end">
-          <button type="button" class="btn btn-primary">Sepetim</button>
-        </div>
+        <button type="button" class="btn btn-primary">Sepetim</button>
+      </div>
     </div>
   </header>
   <nav class="py-2 mb-4 bg-light border-bottom">

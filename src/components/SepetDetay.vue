@@ -1,5 +1,3 @@
 <template>
-    <div>
-        Sepet Detay
-    </div>
+  <div>Sepet Detay</div>
 </template>
