@@ -1,6 +1,6 @@
 <template>
   <div class="col-md-3 mb-3">
-    <div class="card">
+    <div class="card" @click="$router.push('/urun/' + urun.id)">
       <img :src="urun.resim" class="card-img-top" />
       <div class="card-body">
         <h5 class="card-title">
@@ -20,3 +20,9 @@ export default {
   props: ["urun"],
 };
 </script>
+
+<style scoped>
+.card {
+  cursor: pointer;
+}
+</style>
