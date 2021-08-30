@@ -6,6 +6,7 @@
 
 <script>
 import Urun from "./Urun";
+import axios from "axios";
 
 export default {
   components: {
@@ -13,41 +14,18 @@ export default {
   },
   data() {
     return {
-      urunler: [
-        {
-          id: 1,
-          ad: "Elma",
-          resim: "https://picsum.photos/300/200",
-          aciklama:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
-          kategori: 1,
-        },
-        {
-          id: 2,
-          ad: "Portakal",
-          resim: "https://picsum.photos/300/200",
-          aciklama:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
-          kategori: 1,
-        },
-        {
-          id: 3,
-          ad: "Çilek",
-          resim: "https://picsum.photos/300/200",
-          aciklama:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
-          kategori: 1,
-        },
-        {
-          id: 4,
-          ad: "Erik",
-          resim: "https://picsum.photos/300/200",
-          aciklama:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
-          kategori: 1,
-        },
-      ],
+      urunler: [],
     };
+  },
+  created() {
+    axios
+      .get("http://localhost:3000/urunler")
+      .then((response) => {
+        this.urunler = response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   },
 };
 </script>

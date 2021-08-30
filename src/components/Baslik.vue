@@ -20,8 +20,24 @@
   <nav class="py-2 mb-4 bg-light border-bottom">
     <div class="container d-flex flex-wrap">
       <ul class="nav me-auto">
+        <li class="nav-item">
+          <a
+            href="javascript:void(0)"
+            @click="$router.push('/')"
+            exact
+            class="nav-link link-dark px-2"
+          >
+            Ana Sayfa
+          </a>
+        </li>
+
         <li v-for="kategori in kategoriler" class="nav-item" :key="kategori.id">
-          <a :href="kategori.link" class="nav-link link-dark px-2">{{ kategori.ad }}</a>
+          <a
+            href="javascript:void(0)"
+            @click="$router.push('/kategori/' + kategori.slug)"
+            class="nav-link link-dark px-2"
+            >{{ kategori.ad }}</a
+          >
         </li>
       </ul>
       <ul class="nav">

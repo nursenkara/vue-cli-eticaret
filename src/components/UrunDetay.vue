@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-md-6">
-      <img src="https://picsum.photos/500/400" />
+      <img style="width: 100%" src="https://picsum.photos/500/400" />
     </div>
     <div class="col-md-6">
       <h4>Ürün Detayları</h4>
