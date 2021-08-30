@@ -11,7 +11,9 @@
         <input type="search" class="form-control" placeholder="Ara..." aria-label="Ara" />
       </form>
       <div class="text-end">
-        <button type="button" class="btn btn-primary">Sepetim</button>
+        <button type="button" class="btn btn-primary" @click="$router.push('/sepet')">
+          Sepetim
+        </button>
       </div>
     </div>
   </header>
