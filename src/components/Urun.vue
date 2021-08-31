@@ -7,10 +7,14 @@
           {{ urun.ad }}
         </h5>
         <div class="card-text">
-          <div>{{ urun.fiyat }}₺</div>
-          <div>{{ urun.aciklama }}</div>
+          {{ urun.aciklama }}
         </div>
-        <a href="#" class="btn btn-primary">Sepete Ekle</a>
+      </div>
+      <div class="card-footer">
+        <span class="align-bottom">{{ urun.fiyat }}₺</span>
+        <a href="javascript:void(0)" class="btn btn-primary btn-sm float-end">
+          Sepete Ekle
+        </a>
       </div>
     </div>
   </div>
