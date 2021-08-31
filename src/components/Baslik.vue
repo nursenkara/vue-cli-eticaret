@@ -34,7 +34,7 @@
         <li v-for="kategori in kategoriler" class="nav-item" :key="kategori.id">
           <a
             href="javascript:void(0)"
-            @click="$router.push('/kategori/' + kategori.slug)"
+            @click="$router.push('/kategori' + kategori.slug)"
             class="nav-link link-dark px-2"
             >{{ kategori.ad }}</a
           >
