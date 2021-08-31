@@ -10,6 +10,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      kategoriler: [],
       kategoriSlug: this.$route.params.slug,
     };
   },
@@ -19,7 +20,7 @@ export default {
       .then((response) => {
         this.kategoriler = response.data;
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   },
