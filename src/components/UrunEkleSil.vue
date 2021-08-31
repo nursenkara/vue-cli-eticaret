@@ -4,19 +4,32 @@
       <div class="card mb-3">
         <div class="card-header">Ürünler</div>
         <div class="card-body">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" v-for="urun in urunler" :key="urun.id">
-              {{ urun.ad }}
-              {{ urun.fiyat }}₺
-              <button
-                type="button"
-                class="btn btn-danger btn-sm float-end"
-                @click="sil(urun.id)"
-              >
-                Sil
-              </button>
-            </li>
-          </ul>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Ad</th>
+                <th>Fiyat</th>
+                <th>Kategori</th>
+                <th class="float-end">İşlem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="urun in urunler" :key="urun.id">
+                <td>{{ urun.ad }}</td>
+                <td>{{ urun.fiyat }}₺</td>
+                <td>{{ urunKategorisi(urun.kategoriId).ad }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm float-end"
+                    @click="sil(urun.id)"
+                  >
+                    Sil
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -49,11 +62,7 @@
               </option>
             </select>
           </div>
-          <button
-            type="button"
-            class="btn btn-success float-end"
-            @click="kaydet()"
-          >
+          <button type="button" class="btn btn-success float-end" @click="kaydet()">
             Kaydet
           </button>
         </div>
@@ -64,6 +73,7 @@
 
 <script>
 import axios from "axios";
+import _ from "lodash";
 
 export default {
   data() {
@@ -86,7 +96,7 @@ export default {
         .then((response) => {
           this.urunler = response.data;
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     },
@@ -96,9 +106,12 @@ export default {
         .then((response) => {
           this.kategoriler = response.data;
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
+    },
+    urunKategorisi(kategoriId) {
+      return _.find(this.kategoriler, ["id", kategoriId]);
     },
     kaydet() {
       axios
@@ -120,7 +133,7 @@ export default {
           };
           this.urunleriGetir();
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     },
@@ -132,7 +145,7 @@ export default {
             // console.log(response);
             this.urunleriGetir();
           })
-          .catch(function(error) {
+          .catch(function (error) {
             console.log(error);
           });
     },

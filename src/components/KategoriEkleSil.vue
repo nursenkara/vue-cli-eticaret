@@ -4,23 +4,30 @@
       <div class="card mb-3">
         <div class="card-header">Kategoriler</div>
         <div class="card-body">
-          <ul class="list-group list-group-flush">
-            <li
-              class="list-group-item"
-              v-for="kategori in kategoriler"
-              :key="kategori.id"
-            >
-              {{ kategori.ad }}
-              [{{ kategori.slug }}]
-              <button
-                type="button"
-                class="btn btn-danger btn-sm float-end"
-                @click="sil(kategori.id)"
-              >
-                Sil
-              </button>
-            </li>
-          </ul>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Ad</th>
+                <th>Slug</th>
+                <th class="float-end">İşlem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="kategori in kategoriler" :key="kategori.id">
+                <td>{{ kategori.ad }}</td>
+                <td>{{ kategori.slug }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm float-end"
+                    @click="sil(kategori.id)"
+                  >
+                    Sil
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -37,11 +44,7 @@
             <span class="input-group-text"> / </span>
             <input type="text" v-model="kategori.slug" class="form-control" />
           </div>
-          <button
-            type="button"
-            class="btn btn-success float-end"
-            @click="kaydet()"
-          >
+          <button type="button" class="btn btn-success float-end" @click="kaydet()">
             Kaydet
           </button>
         </div>
@@ -70,7 +73,7 @@ export default {
         .then((response) => {
           this.kategoriler = response.data;
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     },
@@ -88,7 +91,7 @@ export default {
           };
           this.kategorileriGetir();
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     },
@@ -100,7 +103,7 @@ export default {
             // console.log(response);
             this.kategorileriGetir();
           })
-          .catch(function(error) {
+          .catch(function (error) {
             console.log(error);
           });
     },
