@@ -1,92 +1,60 @@
 {
   "urunler": [
     {
-      "id": 1,
-      "ad": "Elma",
-      "fiyat": 5,
-      "resim": "https://picsum.photos/300/200",
-      "aciklama": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
-      "kategoriId": 1
-    },
-    {
-      "id": 2,
-      "ad": "Portakal",
-      "fiyat": 5,
-      "resim": "https://picsum.photos/300/200",
-      "aciklama": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
-      "kategoriId": 1
-    },
-    {
-      "id": 3,
-      "ad": "Çilek",
-      "fiyat": 5,
-      "resim": "https://picsum.photos/300/200",
-      "aciklama": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
-      "kategoriId": 1
-    },
-    {
-      "id": 4,
-      "ad": "Erik",
-      "fiyat": 5,
-      "resim": "https://picsum.photos/300/200",
-      "aciklama": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
-      "kategoriId": 1
-    },
-    {
-      "id": 5,
-      "ad": "Çikolata",
-      "fiyat": 5,
-      "resim": "https://picsum.photos/300/200",
-      "aciklama": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
-      "kategoriId": 5
-    },
-    {
-      "ad": "Karpuz",
-      "fiyat": 5,
-      "resim": "https://picsum.photos/300/200",
-      "aciklama": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
-      "kategoriId": 5,
-      "id": 6
-    },
-    {
-      "ad": "Kiraz",
-      "fiyat": "10",
-      "resim": "https://picsum.photos/300/200",
-      "aciklama": "kiraz",
-      "kategoriId": 5,
-      "id": 8
-    },
-    {
-      "ad": "Kavun",
-      "fiyat": "10",
-      "resim": "https://picsum.photos/300/200",
-      "aciklama": "kavun",
-      "kategoriId": 5,
-      "id": 10
-    },
-    {
-      "ad": "Vişne",
-      "fiyat": "4",
-      "resim": "https://picsum.photos/300/200",
-      "aciklama": "vişne",
-      "kategoriId": 5,
-      "id": 11
-    },
-    {
-      "ad": "Ceviz",
-      "fiyat": "10.2",
-      "resim": "https://picsum.photos/300/200",
-      "aciklama": "ceviz",
-      "kategoriId": 5,
-      "id": 12
-    },
-    {
       "ad": "Mercedes",
       "fiyat": 1000,
       "resim": "https://picsum.photos/300/200",
       "aciklama": "araba",
       "kategoriId": 1,
-      "id": 13
+      "id": 1
+    },
+    {
+      "ad": "Opel",
+      "fiyat": 1000,
+      "resim": "https://picsum.photos/300/200",
+      "aciklama": "araba",
+      "kategoriId": 1,
+      "id": 2
+    },
+    {
+      "ad": "Samsung",
+      "fiyat": 100,
+      "resim": "https://picsum.photos/300/200",
+      "aciklama": "telefon",
+      "kategoriId": 2,
+      "id": 3
+    },
+    {
+      "ad": "Vans",
+      "fiyat": 100,
+      "resim": "https://picsum.photos/300/200",
+      "aciklama": "ayakkabı",
+      "kategoriId": 3,
+      "id": 4
+    },
+    {
+      "ad": "Zara",
+      "fiyat": 10,
+      "resim": "https://picsum.photos/300/200",
+      "aciklama": "parfüm",
+      "kategoriId": 4,
+      "id": 5
+    },
+    {
+      "ad": "Erik",
+      "fiyat": 10,
+      "resim": "https://picsum.photos/300/200",
+      "aciklama": "meyve",
+      "kategoriId": 5,
+      "id": 6
+    },
+    {
+      "ad": "Kiraz",
+      "fiyat": 10,
+      "resim": "https://picsum.photos/300/200",
+      "aciklama": "meyve",
+      "kategoriId": 5,
+      "id": 7
     }
   ],
   "kategoriler": [
