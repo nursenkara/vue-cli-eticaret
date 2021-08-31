@@ -1,8 +1,5 @@
 <template>
   <div class="row">
-    urunler: {{urunler}}
-    <hr>
-    pUrunler: {{pUrunler}}
     <Urun :urun="urun" v-for="urun in urunler" :key="urun.id" />
   </div>
 </template>
@@ -18,20 +15,25 @@ export default {
   },
   data() {
     return {
-      urunler: this.pUrunler || [],
+      urunler: [],
     };
   },
-  created() {
-    if (this.pUrunler.length < 1) {
+  mounted() {
+    if (this.pUrunler == undefined) {
       axios
         .get("http://localhost:3000/urunler")
         .then((response) => {
           this.urunler = response.data;
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     }
+  },
+  watch: {
+    pUrunler() {
+      this.urunler = this.pUrunler;
+    },
   },
 };
 </script>
