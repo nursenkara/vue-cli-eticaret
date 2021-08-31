@@ -34,13 +34,40 @@
       "resim": "https://picsum.photos/300/200",
       "aciklama": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
       "kategoriId": 5
+    },
+    {
+      "ad": "Karpuz",
+      "resim": "https://picsum.photos/300/200",
+      "aciklama": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga nemo est repellendus? Odit architecto dolorum incidunt minima asperiores optio id.",
+      "kategoriId": 5,
+      "id": 6
     }
   ],
   "kategoriler": [
-    { "id": 1, "ad": "Araba", "slug": "/araba" },
-    { "id": 2, "ad": "Elektronik", "slug": "/elektronik" },
-    { "id": 3, "ad": "Ayakkabı", "slug": "/ayakkabi" },
-    { "id": 4, "ad": "Kozmetik", "slug": "/kozmetik" },
-    { "id": 5, "ad": "Gıda", "slug": "/gida" }
+    {
+      "id": 1,
+      "ad": "Araba",
+      "slug": "/araba"
+    },
+    {
+      "id": 2,
+      "ad": "Elektronik",
+      "slug": "/elektronik"
+    },
+    {
+      "id": 3,
+      "ad": "Ayakkabı",
+      "slug": "/ayakkabi"
+    },
+    {
+      "id": 4,
+      "ad": "Kozmetik",
+      "slug": "/kozmetik"
+    },
+    {
+      "id": 5,
+      "ad": "Gıda",
+      "slug": "/gida"
+    }
   ]
 }

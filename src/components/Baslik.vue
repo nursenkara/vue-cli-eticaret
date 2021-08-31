@@ -47,6 +47,15 @@
         <li class="nav-item">
           <a href="kayit-ol" class="nav-link link-dark px-2">Kayıt Ol</a>
         </li>
+        <li class="nav-item">
+          <a
+            href="javascript:void(0);"
+            @click="$router.push('/yonetim-paneli')"
+            class="btn btn-primary px-2"
+          >
+            Yönetim Paneli
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
