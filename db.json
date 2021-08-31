@@ -79,6 +79,14 @@
       "aciklama": "ceviz",
       "kategoriId": 5,
       "id": 12
+    },
+    {
+      "ad": "Mercedes",
+      "fiyat": 1000,
+      "resim": "https://picsum.photos/300/200",
+      "aciklama": "araba",
+      "kategoriId": 1,
+      "id": 13
     }
   ],
   "kategoriler": [
@@ -106,11 +114,6 @@
       "id": 5,
       "ad": "Gıda",
       "slug": "/gida"
-    },
-    {
-      "ad": "Erkek",
-      "slug": "/erkek",
-      "id": 6
     }
   ]
 }

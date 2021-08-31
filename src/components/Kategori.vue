@@ -1,16 +1,21 @@
 <template>
   <div>
-    {{ kategoriSlug }}
+    <Urunler :pUrunler="urunler" />
   </div>
 </template>
 
 <script>
+import Urunler from "./Urunler";
 import axios from "axios";
+import _ from "lodash";
 
 export default {
+  components: {
+    Urunler,
+  },
   data() {
     return {
-      kategoriler: [],
+      urunler: [],
       kategoriSlug: this.$route.params.slug,
     };
   },
@@ -18,7 +23,22 @@ export default {
     axios
       .get("http://localhost:3000/kategoriler")
       .then((response) => {
-        this.kategoriler = response.data;
+        var kategoriler = response.data;
+
+        var kategori = _.find(kategoriler, ["slug", "/" + this.kategoriSlug]);
+        if (typeof kategori == "object") {
+          var kategoriId = kategori.id;
+          /* Kategori ID'den ürünleri getir */
+          axios
+            .get("http://localhost:3000/urunler?kategoriId=" + kategoriId)
+            .then((response2) => {
+              this.urunler = response2.data;
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+          /**/
+        }
       })
       .catch(function(error) {
         console.log(error);
