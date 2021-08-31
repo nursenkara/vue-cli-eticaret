@@ -6,9 +6,10 @@
         <h5 class="card-title">
           {{ urun.ad }}
         </h5>
-        <p class="card-text">
-          {{ urun.aciklama }}
-        </p>
+        <div class="card-text">
+          <div>{{ urun.fiyat }}₺</div>
+          <div>{{ urun.aciklama }}</div>
+        </div>
         <a href="#" class="btn btn-primary">Sepete Ekle</a>
       </div>
     </div>

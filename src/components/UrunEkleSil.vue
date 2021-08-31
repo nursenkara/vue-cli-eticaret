@@ -7,6 +7,7 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item" v-for="urun in urunler" :key="urun.id">
               {{ urun.ad }}
+              {{ urun.fiyat }}₺
               <button
                 type="button"
                 class="btn btn-danger btn-sm float-end"
@@ -32,6 +33,11 @@
             <input type="text" v-model="urun.aciklama" class="form-control" />
           </div>
           <div class="input-group mb-3">
+            <span class="input-group-text"> Fiyat </span>
+            <input type="number" step="0.01" v-model="urun.fiyat" class="form-control" />
+            <span class="input-group-text"> ₺ </span>
+          </div>
+          <div class="input-group mb-3">
             <span class="input-group-text"> Kategori </span>
             <select v-model="urun.kategoriId" class="form-select">
               <option
@@ -43,7 +49,11 @@
               </option>
             </select>
           </div>
-          <button type="button" class="btn btn-success float-end" @click="kaydet()">
+          <button
+            type="button"
+            class="btn btn-success float-end"
+            @click="kaydet()"
+          >
             Kaydet
           </button>
         </div>
@@ -54,11 +64,13 @@
 
 <script>
 import axios from "axios";
+
 export default {
   data() {
     return {
       urun: {
         ad: "",
+        fiyat: 0,
         resim: "https://picsum.photos/300/200",
         aciklama: "",
         kategoriId: null,
@@ -74,7 +86,7 @@ export default {
         .then((response) => {
           this.urunler = response.data;
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     },
@@ -84,7 +96,7 @@ export default {
         .then((response) => {
           this.kategoriler = response.data;
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     },
@@ -92,15 +104,23 @@ export default {
       axios
         .post("http://localhost:3000/urunler", {
           ad: this.urun.ad,
+          fiyat: this.urun.fiyat,
           resim: this.urun.resim,
           aciklama: this.urun.aciklama,
           kategoriId: this.urun.kategoriId,
         })
         .then(() => {
           // console.log(response);
+          this.urun = {
+            ad: "",
+            fiyat: 0,
+            resim: "https://picsum.photos/300/200",
+            aciklama: "",
+            kategoriId: null,
+          };
           this.urunleriGetir();
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     },
@@ -112,7 +132,7 @@ export default {
             // console.log(response);
             this.urunleriGetir();
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
     },

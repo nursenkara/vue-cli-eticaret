@@ -8,6 +8,7 @@
       <ul class="list-group">
         <li class="list-group-item">Ürün ID: {{ urunId }}</li>
         <li class="list-group-item">Ürün Adı: {{ urun.ad }}</li>
+        <li class="list-group-item">Ürün Fiyatı: {{ urun.fiyat }}</li>
         <li class="list-group-item">Ürün Açıklama: {{ urun.aciklama }}</li>
       </ul>
     </div>

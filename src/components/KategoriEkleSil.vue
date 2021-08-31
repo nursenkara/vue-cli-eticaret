@@ -37,7 +37,11 @@
             <span class="input-group-text"> / </span>
             <input type="text" v-model="kategori.slug" class="form-control" />
           </div>
-          <button type="button" class="btn btn-success float-end" @click="kaydet()">
+          <button
+            type="button"
+            class="btn btn-success float-end"
+            @click="kaydet()"
+          >
             Kaydet
           </button>
         </div>
@@ -48,6 +52,7 @@
 
 <script>
 import axios from "axios";
+
 export default {
   data() {
     return {
@@ -65,7 +70,7 @@ export default {
         .then((response) => {
           this.kategoriler = response.data;
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     },
@@ -77,9 +82,13 @@ export default {
         })
         .then(() => {
           // console.log(response);
+          this.kategori = {
+            ad: "",
+            slug: "",
+          };
           this.kategorileriGetir();
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     },
@@ -91,7 +100,7 @@ export default {
             // console.log(response);
             this.kategorileriGetir();
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
     },
