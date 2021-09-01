@@ -11,8 +11,17 @@
         <input type="search" class="form-control" placeholder="Ara..." aria-label="Ara" />
       </form>
       <div class="text-end">
-        <button type="button" class="btn btn-primary" @click="$router.push('/sepet')">
+        <button
+          type="button"
+          class="btn btn-primary position-relative"
+          @click="$router.push('/sepet')"
+        >
           Sepetim
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            v-text="sepettekiUrunSayisi"
+          >
+          </span>
         </button>
       </div>
     </div>
@@ -64,5 +73,16 @@
 <script>
 export default {
   props: ["kategoriler"],
+  data() {
+    return {
+      sepettekiUrunSayisi: 0,
+    };
+  },
+  created() {
+    this.emitter.on("sepeteEkle", (urunId) => {
+      this.sepettekiUrunSayisi++;
+      console.log("urunId: " + urunId);
+    });
+  },
 };
 </script>
