@@ -1,6 +1,9 @@
 <template>
-  <div class="row">
+  <div class="row" v-if="urunler.length > 0">
     <Urun :urun="urun" v-for="urun in urunler" :key="urun.id" />
+  </div>
+  <div class="text-center fs-1 m-5 p-5" v-else>
+    . . .
   </div>
 </template>
 
