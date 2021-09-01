@@ -5,7 +5,7 @@
         href="/"
         class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"
       >
-        <span class="fs-4"> Nur'un E-Ticaret Sitesi </span>
+        <span class="fs-4"> E-Ticaret Sitesi </span>
       </a>
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
         <input type="search" class="form-control" placeholder="Ara..." aria-label="Ara" />
