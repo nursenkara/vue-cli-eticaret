@@ -72,6 +72,7 @@
 
 <script>
 import ls from "../ls";
+import toastr from "toastr";
 
 export default {
   props: ["kategoriler"],
@@ -103,6 +104,7 @@ export default {
         this.sepettekiUrunler.push(urun);
       }
       ls("sepettekiUrunler", this.sepettekiUrunler);
+      toastr.success("Ürün sepete eklendi!");
     });
   },
 };

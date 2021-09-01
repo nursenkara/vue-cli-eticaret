@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import router from './router'
 import axios from 'axios'
 import mitt from 'mitt'
+import 'toastr/build/toastr.min.css'
 
 axios.defaults.baseURL = 'https://json-server-db1.herokuapp.com'
 const emitter = mitt()
