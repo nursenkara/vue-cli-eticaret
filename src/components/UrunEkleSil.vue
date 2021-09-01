@@ -10,7 +10,7 @@
                 <th>Ad</th>
                 <th>Fiyat</th>
                 <th>Kategori</th>
-                <th class="float-end">İşlem</th>
+                <th><div class="float-end">İşlem</div></th>
               </tr>
             </thead>
             <tbody v-if="urunler.length > 0">
@@ -111,7 +111,9 @@ export default {
         });
     },
     urunKategorisi(kategoriId) {
-      return _.find(this.kategoriler, ["id", kategoriId]);
+      var ret = _.find(this.kategoriler, ["id", kategoriId]);
+      if (!ret) ret = { ad: "" };
+      return ret;
     },
     kaydet() {
       axios

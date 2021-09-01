@@ -34,13 +34,13 @@ export default {
             .then((response2) => {
               this.urunler = response2.data;
             })
-            .catch(function(error) {
+            .catch(function (error) {
               console.log(error);
             });
           /**/
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   },
