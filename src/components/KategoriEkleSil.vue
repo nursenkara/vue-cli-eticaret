@@ -9,7 +9,7 @@
               <tr>
                 <th>Ad</th>
                 <th>Slug</th>
-                <th class="float-end">İşlem</th>
+                <th><div class="float-end">İşlem</div></th>
               </tr>
             </thead>
             <tbody v-if="kategoriler.length > 0">
