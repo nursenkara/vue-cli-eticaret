@@ -19,7 +19,7 @@
           Sepetim
           <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-            v-text="sepettekiUrunSayisi"
+            v-text="sepettekiUrunler.length"
           >
           </span>
         </button>
@@ -71,17 +71,20 @@
 </template>
 
 <script>
+import ls from "../ls";
+
 export default {
   props: ["kategoriler"],
   data() {
     return {
-      sepettekiUrunSayisi: 0,
+      sepettekiUrunler: [],
     };
   },
   created() {
-    this.emitter.on("sepeteEkle", (urunId) => {
-      this.sepettekiUrunSayisi++;
-      console.log("urunId: " + urunId);
+    this.sepettekiUrunler = ls("sepettekiUrunler");
+    this.emitter.on("sepeteEkle", (urun) => {
+      this.sepettekiUrunler.push(urun);
+      ls("sepettekiUrunler", this.sepettekiUrunler);
     });
   },
 };

@@ -20,10 +20,26 @@
         >
         <a
           href="javascript:void(0);"
-          class="btn btn-primary btn-sm float-end"
-          @click="sepeteEkle(urun.id)"
+          class="btn btn-sm float-end"
+          :class="{
+            'btn-secondary':
+              sepettekiUrunler.findIndex((i) => {
+                return i.id == urun.id;
+              }) > -1,
+            'btn-primary':
+              sepettekiUrunler.findIndex((i) => {
+                return i.id == urun.id;
+              }) < 0,
+          }"
+          @click="sepeteEkle()"
+          v-text="
+            sepettekiUrunler.findIndex((i) => {
+              return i.id == urun.id;
+            }) > -1
+              ? 'Sepete Git'
+              : 'Sepete Ekle'
+          "
         >
-          Sepete Ekle
         </a>
       </div>
     </div>
@@ -31,12 +47,26 @@
 </template>
 
 <script>
+import ls from "../ls";
+
 export default {
   props: ["urun"],
+  data() {
+    return {
+      sepettekiUrunler: [],
+    };
+  },
   methods: {
-    sepeteEkle(urunId) {
-      this.emitter.emit("sepeteEkle", urunId);
+    sepeteEkle() {
+      this.sepettekiUrunler.findIndex((i) => {
+        return i.id == this.urun.id;
+      }) > -1
+        ? this.$router.push("/sepet")
+        : this.emitter.emit("sepeteEkle", this.urun);
     },
+  },
+  created() {
+    this.sepettekiUrunler = ls("sepettekiUrunler");
   },
 };
 </script>
