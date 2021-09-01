@@ -56,11 +56,13 @@ export default {
   },
   methods: {
     sepettenCikar(urun) {
-      let index = this.sepettekiUrunler.findIndex((i) => {
-        return i.id == urun.id;
-      });
-      this.sepettekiUrunler.splice(index, 1);
-      ls("sepettekiUrunler", this.sepettekiUrunler);
+      if (confirm("Ürünü sepetten çıkarmak istediğinizden emin misiniz?")) {
+        let index = this.sepettekiUrunler.findIndex((i) => {
+          return i.id == urun.id;
+        });
+        this.sepettekiUrunler.splice(index, 1);
+        ls("sepettekiUrunler", this.sepettekiUrunler);
+      }
     },
   },
   watch: {
