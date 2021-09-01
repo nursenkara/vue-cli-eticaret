@@ -19,7 +19,7 @@
           Sepetim
           <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-            v-text="sepettekiUrunler.length"
+            v-text="sepettekiToplamUrunSayisi"
           >
           </span>
         </button>
@@ -80,10 +80,28 @@ export default {
       sepettekiUrunler: [],
     };
   },
+  computed: {
+    sepettekiToplamUrunSayisi() {
+      var toplam = 0;
+      this.sepettekiUrunler.map((x) => (toplam += x.adet));
+      return toplam;
+    },
+  },
   created() {
     this.sepettekiUrunler = ls("sepettekiUrunler");
+    this.emitter.on("sepettekiUrunSayisiniGuncelle", () => {
+      this.sepettekiUrunler = ls("sepettekiUrunler");
+    });
     this.emitter.on("sepeteEkle", (urun) => {
-      this.sepettekiUrunler.push(urun);
+      let index = this.sepettekiUrunler.findIndex((i) => {
+        return i.id == urun.id;
+      });
+      if (index > -1) {
+        this.sepettekiUrunler[index].adet += 1;
+      } else {
+        urun.adet = 1;
+        this.sepettekiUrunler.push(urun);
+      }
       ls("sepettekiUrunler", this.sepettekiUrunler);
     });
   },

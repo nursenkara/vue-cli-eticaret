@@ -20,26 +20,9 @@
         >
         <a
           href="javascript:void(0);"
-          class="btn btn-sm float-end"
-          :class="{
-            'btn-secondary':
-              sepettekiUrunler.findIndex((i) => {
-                return i.id == urun.id;
-              }) > -1,
-            'btn-primary':
-              sepettekiUrunler.findIndex((i) => {
-                return i.id == urun.id;
-              }) < 0,
-          }"
+          class="btn btn-primary btn-sm float-end"
           @click="sepeteEkle()"
-          v-text="
-            sepettekiUrunler.findIndex((i) => {
-              return i.id == urun.id;
-            }) > -1
-              ? 'Sepete Git'
-              : 'Sepete Ekle'
-          "
-        >
+          >Sepete Ekle
         </a>
       </div>
     </div>
@@ -58,11 +41,8 @@ export default {
   },
   methods: {
     sepeteEkle() {
-      this.sepettekiUrunler.findIndex((i) => {
-        return i.id == this.urun.id;
-      }) > -1
-        ? this.$router.push("/sepet")
-        : this.emitter.emit("sepeteEkle", this.urun);
+      this.emitter.emit("sepeteEkle", this.urun);
+      this.sepettekiUrunler = ls("sepettekiUrunler");
     },
   },
   created() {
