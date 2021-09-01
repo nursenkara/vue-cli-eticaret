@@ -12,7 +12,7 @@
                 <th class="float-end">İşlem</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody v-if="kategoriler.length > 0">
               <tr v-for="kategori in kategoriler" :key="kategori.id">
                 <td>{{ kategori.ad }}</td>
                 <td>{{ kategori.slug }}</td>

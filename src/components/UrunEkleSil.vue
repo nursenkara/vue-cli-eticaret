@@ -13,7 +13,7 @@
                 <th class="float-end">İşlem</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody v-if="urunler.length > 0">
               <tr v-for="urun in urunler" :key="urun.id">
                 <td>{{ urun.ad }}</td>
                 <td>{{ urun.fiyat }}₺</td>
