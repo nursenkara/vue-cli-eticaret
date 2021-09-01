@@ -81,7 +81,7 @@ export default {
       urun: {
         ad: "",
         fiyat: 0,
-        resim: "https://picsum.photos/300/200",
+        resim: "https://picsum.photos/300/200?random=" + new Date() * 1,
         aciklama: "",
         kategoriId: null,
       },
@@ -129,7 +129,7 @@ export default {
           this.urun = {
             ad: "",
             fiyat: 0,
-            resim: "https://picsum.photos/300/200",
+            resim: "https://picsum.photos/300/200?random=" + new Date() * 1,
             aciklama: "",
             kategoriId: null,
           };
