@@ -21,7 +21,7 @@ export default {
   },
   created() {
     axios
-      .get("http://localhost:3000/kategoriler")
+      .get("/kategoriler")
       .then((response) => {
         this.kategoriler = response.data;
       })

@@ -92,7 +92,7 @@ export default {
   methods: {
     urunleriGetir() {
       axios
-        .get("http://localhost:3000/urunler")
+        .get("/urunler")
         .then((response) => {
           this.urunler = response.data;
         })
@@ -102,7 +102,7 @@ export default {
     },
     kategorileriGetir() {
       axios
-        .get("http://localhost:3000/kategoriler")
+        .get("/kategoriler")
         .then((response) => {
           this.kategoriler = response.data;
         })
@@ -115,7 +115,7 @@ export default {
     },
     kaydet() {
       axios
-        .post("http://localhost:3000/urunler", {
+        .post("/urunler", {
           ad: this.urun.ad,
           fiyat: this.urun.fiyat,
           resim: this.urun.resim,
@@ -140,7 +140,7 @@ export default {
     sil(id) {
       if (confirm("Silmek istediğinizden emin misiniz?"))
         axios
-          .delete("http://localhost:3000/urunler/" + id)
+          .delete("/urunler/" + id)
           .then(() => {
             // console.log(response);
             this.urunleriGetir();

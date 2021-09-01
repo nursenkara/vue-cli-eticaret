@@ -21,7 +21,7 @@ export default {
   },
   created() {
     axios
-      .get("http://localhost:3000/kategoriler")
+      .get("/kategoriler")
       .then((response) => {
         var kategoriler = response.data;
 
@@ -30,7 +30,7 @@ export default {
           var kategoriId = kategori.id;
           /* Kategori ID'den ürünleri getir */
           axios
-            .get("http://localhost:3000/urunler?kategoriId=" + kategoriId)
+            .get("/urunler?kategoriId=" + kategoriId)
             .then((response2) => {
               this.urunler = response2.data;
             })

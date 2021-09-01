@@ -21,7 +21,7 @@ export default {
   mounted() {
     if (this.pUrunler == undefined) {
       axios
-        .get("http://localhost:3000/urunler")
+        .get("/urunler")
         .then((response) => {
           this.urunler = response.data;
         })

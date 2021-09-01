@@ -69,7 +69,7 @@ export default {
   methods: {
     kategorileriGetir() {
       axios
-        .get("http://localhost:3000/kategoriler")
+        .get("/kategoriler")
         .then((response) => {
           this.kategoriler = response.data;
         })
@@ -79,7 +79,7 @@ export default {
     },
     kaydet() {
       axios
-        .post("http://localhost:3000/kategoriler", {
+        .post("/kategoriler", {
           ad: this.kategori.ad,
           slug: ("/" + this.kategori.slug).replace("//", "/"),
         })
@@ -98,7 +98,7 @@ export default {
     sil(id) {
       if (confirm("Silmek istediğinizden emin misiniz?"))
         axios
-          .delete("http://localhost:3000/kategoriler/" + id)
+          .delete("/kategoriler/" + id)
           .then(() => {
             // console.log(response);
             this.kategorileriGetir();

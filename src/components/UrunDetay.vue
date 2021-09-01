@@ -27,7 +27,7 @@ export default {
   },
   created() {
     axios
-      .get("http://localhost:3000/urunler/" + this.urunId)
+      .get("/urunler/" + this.urunId)
       .then((response) => {
         this.urun = response.data;
       })
