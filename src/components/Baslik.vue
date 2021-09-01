@@ -51,10 +51,20 @@
       </ul>
       <ul class="nav">
         <li class="nav-item">
-          <a href="giris-yap" class="nav-link link-dark px-2">Giriş Yap</a>
+          <a
+            @click="$router.push('/giris-yap')"
+            href="javascript:void(0);"
+            class="nav-link link-dark px-2"
+            >Giriş Yap</a
+          >
         </li>
         <li class="nav-item">
-          <a href="kayit-ol" class="nav-link link-dark px-2">Kayıt Ol</a>
+          <a
+            @click="$router.push('/kayit-ol')"
+            href="javascript:void(0);"
+            class="nav-link link-dark px-2"
+            >Kayıt Ol</a
+          >
         </li>
         <li class="nav-item">
           <a
