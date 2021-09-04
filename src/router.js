@@ -4,6 +4,7 @@ import Kategori from './components/Kategori'
 import UrunDetay from './components/UrunDetay'
 import SepetDetay from './components/SepetDetay'
 import YonetimPaneli from './components/YonetimPaneli'
+import KayitOl from './components/KayitOl'
 
 const routes = [
   { path: '/', component: Urunler },
@@ -11,6 +12,7 @@ const routes = [
   { path: '/urun/:urunId', component: UrunDetay },
   { path: '/sepet', component: SepetDetay },
   { path: '/yonetim-paneli', component: YonetimPaneli },
+  { path: '/kayit-ol', component: KayitOl },
 ]
 
 const router = createRouter({
