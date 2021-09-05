@@ -85,7 +85,7 @@ export default {
           sifre: md5(this.sifre),
         })
         .then(() => {
-            this.kayitBasarili = true;
+          this.kayitBasarili = true;
         });
     },
   },
