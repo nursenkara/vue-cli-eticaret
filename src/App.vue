@@ -1,6 +1,6 @@
 <template>
   <Baslik :kategoriler="kategoriler" />
-  <div class="container">
+  <div class="container min-vh-100">
     <router-view :key="$route.path"></router-view>
   </div>
   <Altlik :kategoriler="kategoriler" />
