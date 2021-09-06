@@ -1,10 +1,10 @@
 <template>
   <Baslik :kategoriler="kategoriler" />
-  <h1>
-    {{ getListe }}
-    <button @click="benimSayiEklem">arttir</button>
-  </h1>
-  <div class="container">
+  <div class="container min-vh-100">
+    <div>
+      <button @click="benimSayiEklem">arttir</button>
+      {{ getListe }}
+    </div>
     <router-view :key="$route.path"></router-view>
   </div>
   <Altlik :kategoriler="kategoriler" />
