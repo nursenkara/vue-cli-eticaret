@@ -33,7 +33,7 @@ export default {
   methods: {
     ...mapActions(["sayiEkle"]),
     benimSayiEklem() {
-      this.sayiEkle(new Date() * 1);
+      this.sayiEkle(this.getListe.length + 1);
     },
   },
   created() {
