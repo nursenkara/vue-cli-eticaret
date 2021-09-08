@@ -1,10 +1,6 @@
 <template>
   <Baslik :kategoriler="kategoriler" />
   <div class="container min-vh-100">
-    <div>
-      <button @click="benimSayiEklem">arttir</button>
-      {{ getListe }}
-    </div>
     <router-view :key="$route.path"></router-view>
   </div>
   <Altlik :kategoriler="kategoriler" />
@@ -14,7 +10,6 @@
 import Baslik from "./components/Baslik.vue";
 import Altlik from "./components/Altlik.vue";
 import axios from "axios";
-import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "App",
@@ -26,15 +21,6 @@ export default {
     return {
       kategoriler: [],
     };
-  },
-  computed: {
-    ...mapGetters(["getListe"]),
-  },
-  methods: {
-    ...mapActions(["sayiEkle"]),
-    benimSayiEklem() {
-      this.sayiEkle(this.getListe.length + 1);
-    },
   },
   created() {
     axios
