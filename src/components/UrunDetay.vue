@@ -29,6 +29,7 @@
 <script>
 import axios from "axios";
 import ls from "../ls";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -36,6 +37,9 @@ export default {
       urunId: this.$route.params.urunId,
       urun: {},
     };
+  },
+  computed: {
+    ...mapGetters(["GetGirisYapmisKullanici"]),
   },
   methods: {
     sepeteEkle() {

@@ -31,6 +31,7 @@
 
 <script>
 import ls from "../ls";
+import { mapGetters } from "vuex";
 
 export default {
   props: ["urun"],
@@ -38,6 +39,9 @@ export default {
     return {
       sepettekiUrunler: [],
     };
+  },
+  computed: {
+    ...mapGetters(["GetGirisYapmisKullanici"]),
   },
   methods: {
     sepeteEkle() {

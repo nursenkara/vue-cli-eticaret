@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="sepettekiUrunler.length < 1" class="text-center">
-      Sepetinizde Hiç Ürün Yok!
+      Sepetinizde hiç ürün yok!
     </div>
     <div v-if="sepettekiUrunler.length > 0" class="card mb-3">
       <div class="card-header">Sepet İçeriği</div>

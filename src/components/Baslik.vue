@@ -84,7 +84,7 @@
               {{ GetGirisYapmisKullanici.soyad }}
             </button>
             <ul class="dropdown-menu" aria-labelledby="kullaniciDropdown">
-              <li>
+              <li v-if="GetGirisYapmisKullanici.rol == 'admin'">
                 <a
                   class="dropdown-item"
                   href="javascript:void(0);"
@@ -140,17 +140,24 @@ export default {
       this.sepettekiUrunler = ls("sepettekiUrunler");
     });
     this.emitter.on("sepeteEkle", (urun) => {
-      let index = this.sepettekiUrunler.findIndex((i) => {
-        return i.id == urun.id;
-      });
-      if (index > -1) {
-        this.sepettekiUrunler[index].adet += 1;
+      if (this.GetGirisYapmisKullanici != null) {
+        let index = this.sepettekiUrunler.findIndex((i) => {
+          return i.id == urun.id;
+        });
+        if (index > -1) {
+          this.sepettekiUrunler[index].adet += 1;
+        } else {
+          urun.adet = 1;
+          this.sepettekiUrunler.push(urun);
+        }
+        ls("sepettekiUrunler", this.sepettekiUrunler);
+        toastr.success("Ürün sepete eklendi!");
       } else {
-        urun.adet = 1;
-        this.sepettekiUrunler.push(urun);
+        toastr.warning(
+          "Sepete ürün ekleyebilmek için önce giriş yapmanız gerekmektedir!"
+        );
+        this.$router.push("/giris-yap");
       }
-      ls("sepettekiUrunler", this.sepettekiUrunler);
-      toastr.success("Ürün sepete eklendi!");
     });
   },
 };

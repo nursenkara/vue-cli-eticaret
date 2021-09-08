@@ -6,6 +6,12 @@
           Giriş Yap
         </div>
         <div class="card-body">
+          <div class="mb-3">
+            Kayıtlı değilseniz kayıt olmak için
+            <a href="javascript:void(0)" @click="$router.push('/kayit-ol')"
+              >tıklayınız</a
+            >.
+          </div>
           <div class="input-group mb-3">
             <span class="input-group-text">
               E-Posta
@@ -37,8 +43,8 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      eposta: "",
-      sifre: "",
+      eposta: "sistem@admin.com",
+      sifre: "543210",
     };
   },
   methods: {
@@ -51,7 +57,7 @@ export default {
         .then((r) => {
           if (r.data.length > 0) {
             this.SetGirisYapmisKullanici(r.data[0]);
-            this.$router.push("/yonetim-paneli");
+            this.$router.push("/");
           }
         });
     },
