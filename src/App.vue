@@ -9,7 +9,6 @@
 <script>
 import Baslik from "./components/Baslik.vue";
 import Altlik from "./components/Altlik.vue";
-import Modal from "./components/Modal.vue";
 import axios from "axios";
 
 export default {
@@ -17,7 +16,6 @@ export default {
   components: {
     Baslik,
     Altlik,
-    Modal,
   },
   data() {
     return {
