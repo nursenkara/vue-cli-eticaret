@@ -3,22 +3,22 @@ import { createStore } from "vuex";
 const store = createStore({
   state() {
     return {
-      liste: [1, 2, 3, 4],
+      girisYapmisKullanici: null,
     };
   },
   mutations: {
-    sayiEkle(state, payload) {
-      state.liste.push(payload);
+    SetGirisYapmisKullanici(state, payload) {
+      state.girisYapmisKullanici = payload;
     },
   },
   actions: {
-    sayiEkle({ commit }, payload) {
-      commit("sayiEkle", payload);
+    SetGirisYapmisKullanici({ commit }, payload) {
+      commit("SetGirisYapmisKullanici", payload);
     },
   },
   getters: {
-    getListe(state) {
-      return state.liste;
+    GetGirisYapmisKullanici(state) {
+      return state.girisYapmisKullanici;
     },
   },
 });
