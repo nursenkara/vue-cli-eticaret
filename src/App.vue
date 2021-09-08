@@ -28,7 +28,7 @@ export default {
       .then((response) => {
         this.kategoriler = response.data;
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   },

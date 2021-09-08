@@ -32,6 +32,7 @@
 <script>
 import axios from "axios";
 import md5 from "md5";
+import { mapActions } from "vuex";
 
 export default {
   data() {
@@ -41,6 +42,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["SetGirisYapmisKullanici"]),
     girisYap() {
       axios
         .get(
@@ -48,7 +50,8 @@ export default {
         )
         .then((r) => {
           if (r.data.length > 0) {
-            alert(JSON.stringify(r.data[0], 2, 2));
+            this.SetGirisYapmisKullanici(r.data[0]);
+            this.$router.push("/yonetim-paneli");
           }
         });
     },

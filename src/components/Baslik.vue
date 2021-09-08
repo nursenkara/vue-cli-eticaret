@@ -8,7 +8,12 @@
         <span class="fs-4"> E-Ticaret Sitesi </span>
       </a>
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="search" class="form-control" placeholder="Ara..." aria-label="Ara" />
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Ara..."
+          aria-label="Ara"
+        />
       </form>
       <div class="text-end">
         <button
@@ -50,7 +55,7 @@
         </li>
       </ul>
       <ul class="nav">
-        <li class="nav-item">
+        <li class="nav-item" v-if="!GetGirisYapmisKullanici">
           <a
             @click="$router.push('/giris-yap')"
             href="javascript:void(0);"
@@ -58,7 +63,7 @@
             >Giriş Yap</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="!GetGirisYapmisKullanici">
           <a
             @click="$router.push('/kayit-ol')"
             href="javascript:void(0);"
@@ -67,13 +72,39 @@
           >
         </li>
         <li class="nav-item">
-          <a
-            href="javascript:void(0);"
-            @click="$router.push('/yonetim-paneli')"
-            class="btn btn-primary px-2"
-          >
-            Yönetim Paneli
-          </a>
+          <div class="btn-group" role="group" v-if="GetGirisYapmisKullanici">
+            <button
+              id="kullaniciDropdown"
+              type="button"
+              class="btn btn-primary dropdown-toggle position-relative"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ GetGirisYapmisKullanici.ad }}
+              {{ GetGirisYapmisKullanici.soyad }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="kullaniciDropdown">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="javascript:void(0);"
+                  @click="$router.push('/yonetim-paneli')"
+                  >Yönetim Paneli</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="javascript:void(0);"
+                  @click="
+                    SetGirisYapmisKullanici(null);
+                    $router.push('/giris-yap');
+                  "
+                  >Çıkış Yap</a
+                >
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
     </div>
@@ -83,6 +114,7 @@
 <script>
 import ls from "../ls";
 import toastr from "toastr";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   props: ["kategoriler"],
@@ -91,7 +123,11 @@ export default {
       sepettekiUrunler: [],
     };
   },
+  methods: {
+    ...mapActions(["SetGirisYapmisKullanici"]),
+  },
   computed: {
+    ...mapGetters(["GetGirisYapmisKullanici"]),
     sepettekiToplamUrunSayisi() {
       var toplam = 0;
       this.sepettekiUrunler.map((x) => (toplam += x.adet));
