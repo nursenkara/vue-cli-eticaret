@@ -1,9 +1,13 @@
 <template>
   <div v-if="GetGirisYapmisKullanici">
-    <h4 class="text-center">Kategori Ekle / Sil</h4>
-    <KategoriEkleSil />
-    <h4 class="text-center">Ürün Ekle / Sil</h4>
-    <UrunEkleSil />
+    <div class="row">
+      <div class="col-md-6">
+        <KategoriEkleSil />
+      </div>
+      <div class="col-md-6">
+        <UrunEkleSil />
+      </div>
+    </div>
   </div>
   <div v-else class="text-center">
     <div>

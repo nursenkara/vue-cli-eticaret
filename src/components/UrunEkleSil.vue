@@ -1,42 +1,10 @@
 <template>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card mb-3">
-        <div class="card-header">Ürünler</div>
-        <div class="card-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Ad</th>
-                <th>Fiyat</th>
-                <th>Kategori</th>
-                <th><div class="float-end">İşlem</div></th>
-              </tr>
-            </thead>
-            <tbody v-if="urunler.length > 0">
-              <tr v-for="urun in urunler" :key="urun.id">
-                <td>{{ urun.ad }}</td>
-                <td>{{ urun.fiyat }}₺</td>
-                <td>{{ urunKategorisi(urun.kategoriId).ad }}</td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-danger btn-sm float-end"
-                    @click="sil(urun.id)"
-                  >
-                    Sil
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card mb-3">
-        <div class="card-header">Ürün Ekle</div>
-        <div class="card-body">
+  <div class="card mb-3">
+    <div class="card-header">
+      Ürünler
+      <Modal id="modalUrunEkle" title="Ürün Ekle" ref="modalUrunEkle">
+        <template v-slot:body>
+          <!-- -->
           <div class="input-group mb-3">
             <span class="input-group-text"> Ad </span>
             <input type="text" v-model="urun.ad" class="form-control" />
@@ -47,7 +15,12 @@
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text"> Fiyat </span>
-            <input type="number" step="0.01" v-model="urun.fiyat" class="form-control" />
+            <input
+              type="number"
+              step="0.01"
+              v-model="urun.fiyat"
+              class="form-control"
+            />
             <span class="input-group-text"> ₺ </span>
           </div>
           <div class="input-group mb-3">
@@ -62,11 +35,55 @@
               </option>
             </select>
           </div>
-          <button type="button" class="btn btn-success float-end" @click="kaydet()">
+          <!-- -->
+        </template>
+        <template v-slot:footer>
+          <button
+            type="button"
+            class="btn btn-success float-end"
+            @click="
+              kaydet();
+              $refs.modalUrunEkle.Kapat();
+            "
+          >
             Kaydet
           </button>
-        </div>
-      </div>
+        </template>
+      </Modal>
+      <button
+        @click="$refs.modalUrunEkle.Ac"
+        class="btn btn-primary btn-sm float-end"
+      >
+        Ürün Ekle
+      </button>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Ad</th>
+            <th>Fiyat</th>
+            <th>Kategori</th>
+            <th><div class="float-end">İşlem</div></th>
+          </tr>
+        </thead>
+        <tbody v-if="urunler.length > 0">
+          <tr v-for="urun in urunler" :key="urun.id">
+            <td>{{ urun.ad }}</td>
+            <td>{{ urun.fiyat }}₺</td>
+            <td>{{ urunKategorisi(urun.kategoriId).ad }}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm float-end"
+                @click="sil(urun.id)"
+              >
+                Sil
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -74,8 +91,12 @@
 <script>
 import axios from "axios";
 import _ from "lodash";
+import Modal from "./Modal";
 
 export default {
+  components: {
+    Modal,
+  },
   data() {
     return {
       urun: {
@@ -96,7 +117,7 @@ export default {
         .then((response) => {
           this.urunler = response.data;
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     },
@@ -106,7 +127,7 @@ export default {
         .then((response) => {
           this.kategoriler = response.data;
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     },
@@ -135,7 +156,7 @@ export default {
           };
           this.urunleriGetir();
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
     },
@@ -147,7 +168,7 @@ export default {
             // console.log(response);
             this.urunleriGetir();
           })
-          .catch(function (error) {
+          .catch(function(error) {
             console.log(error);
           });
     },
