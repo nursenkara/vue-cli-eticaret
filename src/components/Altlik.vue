@@ -3,9 +3,16 @@
     <div class="container p-4">
       <section class="mb-4">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-          repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia
-          magnam eum harum corrupti dicta, aliquam sequi voluptate quas.
+          Gizli Bilgiyi Alan, İş’in ve Bilgiler’in gizli bilgi olarak
+          saklanmasını, gizliliğinin mutlak surette korunmasını ve aksi yazılı
+          olarak Gizi Bilgiyi Veren tarafından talep edilmedikçe hiçbir şekilde
+          üçüncü kişilere ifşa edilmemesini, her ne maksatla olursa olsun
+          parasal veya parasal olmayan menfaatler de dahil olmak üzere herhangi
+          bir şey karşılığında veya karşılıksız olarak, Taraflar’ın rakibi olan
+          veya üçüncü şahıs konumundaki herhangi bir kişi, şirket veya kuruma
+          verilmemesini, paylaşılmamasını, çoğaltılarak dağıtılmamasını, veri
+          aktarım sistemleri marifetiyle erişim hakkının sağlanılmamasını
+          sağlamakla yükümlüdür.
         </p>
       </section>
       <section class="">
