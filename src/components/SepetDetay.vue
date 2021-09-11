@@ -42,6 +42,12 @@
         </table>
       </div>
     </div>
+    <button
+      class="btn btn-success w-100"
+      @click="$router.push('/alisverisi-tamamla')"
+    >
+      Alışverişi Tamamla
+    </button>
   </div>
 </template>
 
