@@ -17,45 +17,14 @@
       </section>
       <section class="">
         <div class="row">
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0" v-for="i in 4" :key="i">
             <ul class="list-unstyled mb-0">
-              <li v-for="kategori in kategoriler" :key="kategori.id">
-                <a
-                  href="javascript:void(0)"
-                  @click="$router.push('/kategori' + kategori.slug)"
-                  class="text-white"
-                  >{{ kategori.ad }}</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <ul class="list-unstyled mb-0">
-              <li v-for="kategori in kategoriler" :key="kategori.id">
-                <a
-                  href="javascript:void(0)"
-                  @click="$router.push('/kategori' + kategori.slug)"
-                  class="text-white"
-                  >{{ kategori.ad }}</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <ul class="list-unstyled mb-0">
-              <li v-for="kategori in kategoriler" :key="kategori.id">
-                <a
-                  href="javascript:void(0)"
-                  @click="$router.push('/kategori' + kategori.slug)"
-                  class="text-white"
-                  >{{ kategori.ad }}</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <ul class="list-unstyled mb-0">
-              <li v-for="kategori in kategoriler" :key="kategori.id">
+              <li
+                v-for="kategori in kategoriler
+                  .slice()
+                  .sort(() => 0.5 - Math.random())"
+                :key="kategori.id"
+              >
                 <a
                   href="javascript:void(0)"
                   @click="$router.push('/kategori' + kategori.slug)"
