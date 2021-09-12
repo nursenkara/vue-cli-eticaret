@@ -21,7 +21,6 @@ export default {
   props: ["id", "title"],
   methods: {
     Ac() {
-      console.log("OK");
       $("#" + this.id).modal("show");
     },
     Kapat() {
