@@ -17,7 +17,7 @@
           <a
             href="javascript:void(0);"
             class="btn btn-primary float-end"
-            @click="sepeteEkle()"
+            @click="SepeteEkle(urun)"
             >Sepete Ekle
           </a>
         </div>
@@ -28,8 +28,7 @@
 
 <script>
 import axios from "axios";
-import ls from "../ls";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   data() {
@@ -42,10 +41,7 @@ export default {
     ...mapGetters(["GetGirisYapmisKullanici"]),
   },
   methods: {
-    sepeteEkle() {
-      this.emitter.emit("sepeteEkle", this.urun);
-      this.sepettekiUrunler = ls("sepettekiUrunler");
-    },
+    ...mapActions(["SepeteEkle"]),
   },
   created() {
     axios

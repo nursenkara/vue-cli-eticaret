@@ -21,7 +21,7 @@
         <a
           href="javascript:void(0);"
           class="btn btn-primary btn-sm float-end"
-          @click="sepeteEkle()"
+          @click="SepeteEkle(urun)"
           >Sepete Ekle
         </a>
       </div>
@@ -30,27 +30,15 @@
 </template>
 
 <script>
-import ls from "../ls";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   props: ["urun"],
-  data() {
-    return {
-      sepettekiUrunler: [],
-    };
-  },
   computed: {
-    ...mapGetters(["GetGirisYapmisKullanici"]),
+    ...mapGetters(["GetGirisYapmisKullanici", "GetSepettekiUrunler"]),
   },
   methods: {
-    sepeteEkle() {
-      this.emitter.emit("sepeteEkle", this.urun);
-      this.sepettekiUrunler = ls("sepettekiUrunler");
-    },
-  },
-  created() {
-    this.sepettekiUrunler = ls("sepettekiUrunler");
+    ...mapActions(["SepeteEkle"]),
   },
 };
 </script>

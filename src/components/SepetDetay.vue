@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div v-if="sepettekiUrunler.length < 1" class="text-center">
+    <div v-if="GetSepettekiUrunler.length < 1" class="text-center">
       Sepetinizde hiç ürün yok!
     </div>
-    <div v-if="sepettekiUrunler.length > 0" class="card mb-3">
+    <div v-if="GetSepettekiUrunler.length > 0" class="card mb-3">
       <div class="card-header">Sepet İçeriği</div>
       <div class="card-body p-0">
         <table class="table table-bordered m-0">
@@ -15,8 +15,8 @@
               <th></th>
             </tr>
           </thead>
-          <tbody v-if="sepettekiUrunler.length > 0">
-            <tr v-for="urun in sepettekiUrunler" :key="urun.id">
+          <tbody v-if="GetSepettekiUrunler.length > 0">
+            <tr v-for="urun in GetSepettekiUrunler" :key="urun.id">
               <td>{{ urun.ad }}</td>
               <td>{{ urun.fiyat }}₺</td>
               <td>
@@ -32,7 +32,7 @@
                 <button
                   type="button"
                   class="btn btn-danger btn-sm float-end"
-                  @click="sepettenCikar(urun)"
+                  @click="SepettenCikar(urun)"
                 >
                   Sepetten Çıkar
                 </button>
@@ -52,36 +52,14 @@
 </template>
 
 <script>
-import ls from "../ls";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  data() {
-    return {
-      sepettekiUrunler: [],
-    };
-  },
   methods: {
-    sepettenCikar(urun) {
-      if (confirm("Ürünü sepetten çıkarmak istediğinizden emin misiniz?")) {
-        let index = this.sepettekiUrunler.findIndex((i) => {
-          return i.id == urun.id;
-        });
-        this.sepettekiUrunler.splice(index, 1);
-        ls("sepettekiUrunler", this.sepettekiUrunler);
-      }
-    },
+    ...mapActions(["SepettenCikar"]),
   },
-  watch: {
-    sepettekiUrunler: {
-      handler() {
-        ls("sepettekiUrunler", this.sepettekiUrunler);
-        this.emitter.emit("sepettekiUrunSayisiniGuncelle");
-      },
-      deep: true,
-    },
-  },
-  created() {
-    this.sepettekiUrunler = ls("sepettekiUrunler");
+  computed: {
+    ...mapGetters(["GetSepettekiUrunler"]),
   },
 };
 </script>
