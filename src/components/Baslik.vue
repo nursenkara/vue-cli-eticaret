@@ -2,7 +2,8 @@
   <header class="py-3 border-bottom">
     <div class="container d-flex flex-wrap justify-content-center">
       <a
-        href="/"
+        href="#"
+        @click="$router.push('/')"
         class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"
       >
         <span class="fs-4"> E-Ticaret Sitesi </span>
@@ -24,7 +25,7 @@
           Sepetim
           <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-            v-text="sepettekiToplamUrunSayisi"
+            v-text="GetSepettekiToplamUrunSayisi"
           >
           </span>
         </button>
@@ -97,7 +98,7 @@
                   class="dropdown-item"
                   href="javascript:void(0);"
                   @click="
-                    SetGirisYapmisKullanici(null);
+                    SetGirisYapmisKullanici([]);
                     $router.push('/giris-yap');
                   "
                   >Çıkış Yap</a
@@ -112,53 +113,15 @@
 </template>
 
 <script>
-import ls from "../ls";
-import toastr from "toastr";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   props: ["kategoriler"],
-  data() {
-    return {
-      sepettekiUrunler: [],
-    };
-  },
   methods: {
-    ...mapActions(["SetGirisYapmisKullanici"]),
+    ...mapActions(["SetGirisYapmisKullanici", "SepeteEkle"]),
   },
   computed: {
-    ...mapGetters(["GetGirisYapmisKullanici"]),
-    sepettekiToplamUrunSayisi() {
-      var toplam = 0;
-      this.sepettekiUrunler.map((x) => (toplam += x.adet));
-      return toplam;
-    },
-  },
-  created() {
-    this.sepettekiUrunler = ls("sepettekiUrunler");
-    this.emitter.on("sepettekiUrunSayisiniGuncelle", () => {
-      this.sepettekiUrunler = ls("sepettekiUrunler");
-    });
-    this.emitter.on("sepeteEkle", (urun) => {
-      if (this.GetGirisYapmisKullanici != null) {
-        let index = this.sepettekiUrunler.findIndex((i) => {
-          return i.id == urun.id;
-        });
-        if (index > -1) {
-          this.sepettekiUrunler[index].adet += 1;
-        } else {
-          urun.adet = 1;
-          this.sepettekiUrunler.push(urun);
-        }
-        ls("sepettekiUrunler", this.sepettekiUrunler);
-        toastr.success("Ürün sepete eklendi!");
-      } else {
-        toastr.warning(
-          "Sepete ürün ekleyebilmek için önce giriş yapmanız gerekmektedir!"
-        );
-        this.$router.push("/giris-yap");
-      }
-    });
+    ...mapGetters(["GetGirisYapmisKullanici", "GetSepettekiUrunler", "GetSepettekiToplamUrunSayisi"]),
   },
 };
 </script>

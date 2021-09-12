@@ -1,42 +1,22 @@
 <script>
-import ls from "../ls";
+import { mapGetters } from "vuex";
 
 export default {
-  data() {
-    return {
-      sepettekiUrunler: [],
-    };
-  },
   methods: {
     alisverisiTamamla() {
       alert("Alışveriş tamamlandı!");
     },
   },
   computed: {
+    ...mapGetters(["GetSepettekiUrunler", "GetSepettekiToplamUrunSayisi"]),
     toplamFiyat() {
       let ret = 0;
-      for (let i in this.sepettekiUrunler) {
-        ret += this.sepettekiUrunler[i].adet * this.sepettekiUrunler[i].fiyat;
+      for (let i in this.GetSepettekiUrunler) {
+        ret +=
+          this.GetSepettekiUrunler[i].adet * this.GetSepettekiUrunler[i].fiyat;
       }
       return ret;
     },
-    sepettekiToplamUrunSayisi() {
-      var toplam = 0;
-      this.sepettekiUrunler.map((x) => (toplam += x.adet));
-      return toplam;
-    },
-  },
-  watch: {
-    sepettekiUrunler: {
-      handler() {
-        ls("sepettekiUrunler", this.sepettekiUrunler);
-        this.emitter.emit("sepettekiUrunSayisiniGuncelle");
-      },
-      deep: true,
-    },
-  },
-  created() {
-    this.sepettekiUrunler = ls("sepettekiUrunler");
   },
 };
 </script>
@@ -54,13 +34,13 @@ export default {
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Sepetim</span>
           <span class="badge bg-primary rounded-pill">{{
-            sepettekiToplamUrunSayisi
+            GetSepettekiToplamUrunSayisi
           }}</span>
         </h4>
-        <ul class="list-group mb-3" v-if="sepettekiUrunler.length > 0">
+        <ul class="list-group mb-3" v-if="GetSepettekiUrunler.length > 0">
           <li
             class="list-group-item d-flex justify-content-between lh-sm"
-            v-for="urun in sepettekiUrunler"
+            v-for="urun in GetSepettekiUrunler"
             :key="urun.id"
           >
             <div>
@@ -74,7 +54,7 @@ export default {
             <strong>{{ toplamFiyat }}₺</strong>
           </li>
         </ul>
-        <div v-if="sepettekiUrunler.length < 1" class="text-center">
+        <div v-if="GetSepettekiUrunler.length < 1" class="text-center">
           Sepetinizde hiç ürün yok!
         </div>
       </div>
