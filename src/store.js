@@ -78,7 +78,7 @@ const store = createStore({
     GetSepettekiToplamUrunSayisi(state) {
       var toplam = 0;
       state.sepettekiUrunler.map((x) => (toplam += ("0" + x.adet) * 1));
-      return toplam;
+      return Array.isArray(state.girisYapmisKullanici) ? [] : toplam;
     },
   },
 });
