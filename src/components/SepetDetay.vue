@@ -43,6 +43,7 @@
       </div>
     </div>
     <button
+      v-if="GetSepettekiUrunler.length > 0"
       class="btn btn-success w-100"
       @click="$router.push('/alisverisi-tamamla')"
     >
