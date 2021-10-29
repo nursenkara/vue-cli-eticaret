@@ -261,7 +261,7 @@ export default {
           <hr class="my-4" />
 
           <button
-            class="w-100 btn btn-primary btn-lg"
+            class="w-100 btn btn-primary btn-lg mt-3"
             type="button"
             @click="alisverisiTamamla()"
           >
