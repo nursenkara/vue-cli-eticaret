@@ -7,6 +7,7 @@ import AlisverisiTamamla from "./components/AlisverisiTamamla";
 import YonetimPaneli from "./components/YonetimPaneli";
 import KayitOl from "./components/KayitOl";
 import GirisYap from "./components/GirisYap";
+import AramaSonuclari from "./components/AramaSonuclari";
 
 const routes = [
   { path: "/", component: Urunler },
@@ -17,6 +18,7 @@ const routes = [
   { path: "/yonetim-paneli", component: YonetimPaneli },
   { path: "/kayit-ol", component: KayitOl },
   { path: "/giris-yap", component: GirisYap },
+  { path: "/ara/:q", component: AramaSonuclari },
 ];
 
 const router = createRouter({

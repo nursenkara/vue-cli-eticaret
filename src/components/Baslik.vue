@@ -8,12 +8,17 @@
       >
         <span class="fs-4"> E-Ticaret Sitesi </span>
       </a>
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+      <form
+        class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+        @submit="$router.push('/ara/' + q)"
+        onsubmit="return false"
+      >
         <input
           type="search"
           class="form-control"
           placeholder="Ara..."
           aria-label="Ara"
+          v-model="q"
         />
       </form>
       <div class="text-end">
@@ -117,11 +122,20 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   props: ["kategoriler"],
+  data() {
+    return {
+      q: "",
+    };
+  },
   methods: {
     ...mapActions(["SetGirisYapmisKullanici", "SepeteEkle"]),
   },
   computed: {
-    ...mapGetters(["GetGirisYapmisKullanici", "GetSepettekiUrunler", "GetSepettekiToplamUrunSayisi"]),
+    ...mapGetters([
+      "GetGirisYapmisKullanici",
+      "GetSepettekiUrunler",
+      "GetSepettekiToplamUrunSayisi",
+    ]),
   },
 };
 </script>
