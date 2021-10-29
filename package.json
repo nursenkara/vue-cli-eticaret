@@ -5,13 +5,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build && rm -rf dist/js/*.map",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "node server.js"
   },
   "dependencies": {
     "@popperjs/core": "^2.10.1",
     "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "md5": "^2.3.0",
