@@ -20,7 +20,7 @@ export default {
   },
   created() {
     axios
-      .get("/urunler")
+      .get("/Urun")
       .then((response) => {
         this.urunler = response.data;
       })
@@ -33,7 +33,7 @@ export default {
       var that = this;
       return that.urunler
         .filter(function(i) {
-          var t = i.ad.trim().normalize("NFC").turkishToLower();
+          var t = i.Ad.trim().normalize("NFC").turkishToLower();
           var f = that.q.trim().normalize("NFC").turkishToLower();
           if (f == "") {
             return true;
@@ -41,10 +41,10 @@ export default {
           return t.indexOf(f) !== -1;
         })
         .sort(function(a, b) {
-          if (a.ad > b.ad) {
+          if (a.Ad > b.Ad) {
             return 1;
           }
-          if (b.ad > a.ad) {
+          if (b.Ad > a.Ad) {
             return -1;
           }
           return 0;

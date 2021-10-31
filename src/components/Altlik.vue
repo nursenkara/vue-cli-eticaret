@@ -23,13 +23,13 @@
                 v-for="kategori in kategoriler
                   .slice()
                   .sort(() => 0.5 - Math.random())"
-                :key="kategori.id"
+                :key="kategori.KategoriID"
               >
                 <a
                   href="javascript:void(0)"
-                  @click="$router.push('/kategori' + kategori.slug)"
+                  @click="$router.push('/kategori' + kategori.Slug)"
                   class="text-white"
-                  >{{ kategori.ad }}</a
+                  >{{ kategori.Ad }}</a
                 >
               </li>
             </ul>

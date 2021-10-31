@@ -1,16 +1,16 @@
 <template>
   <div class="row">
     <div class="col-md-6">
-      <img style="width: 100%" :src="urun.resim" />
+      <img style="width: 100%" :src="urun.Resim" />
     </div>
     <div class="col-md-6">
       <div class="card mb-3">
         <div class="card-header">Ürün Detayları</div>
         <div class="card-body">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{ urun.ad }}</li>
-            <li class="list-group-item">{{ urun.aciklama }}</li>
-            <li class="list-group-item">{{ urun.fiyat }}₺</li>
+            <li class="list-group-item">{{ urun.Ad }}</li>
+            <li class="list-group-item">{{ urun.Aciklama }}</li>
+            <li class="list-group-item">{{ urun.Fiyat }}₺</li>
           </ul>
         </div>
         <div class="card-footer">
@@ -45,7 +45,7 @@ export default {
   },
   created() {
     axios
-      .get("/urunler/" + this.urunId)
+      .get("/Urun/" + this.urunId)
       .then((response) => {
         this.urun = response.data;
       })

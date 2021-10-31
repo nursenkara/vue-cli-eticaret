@@ -7,31 +7,31 @@
           <!-- -->
           <div class="input-group mb-3">
             <span class="input-group-text"> Ad </span>
-            <input type="text" v-model="urun.ad" class="form-control" />
+            <input type="text" v-model="urun.Ad" class="form-control" />
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text"> Açıklama </span>
-            <input type="text" v-model="urun.aciklama" class="form-control" />
+            <input type="text" v-model="urun.Aciklama" class="form-control" />
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text"> Fiyat </span>
             <input
               type="number"
               step="0.01"
-              v-model="urun.fiyat"
+              v-model="urun.Fiyat"
               class="form-control"
             />
             <span class="input-group-text"> ₺ </span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text"> Kategori </span>
-            <select v-model="urun.kategoriId" class="form-select">
+            <select v-model="urun.KategoriID" class="form-select">
               <option
                 v-for="kategori in kategoriler"
-                :key="kategori.id"
-                :value="kategori.id"
+                :key="kategori.KategoriID"
+                :value="kategori.KategoriID"
               >
-                {{ kategori.ad }}
+                {{ kategori.Ad }}
               </option>
             </select>
           </div>
@@ -68,15 +68,15 @@
           </tr>
         </thead>
         <tbody v-if="urunler.length > 0">
-          <tr v-for="urun in urunler" :key="urun.id">
-            <td>{{ urun.ad }}</td>
-            <td>{{ urun.fiyat }}₺</td>
-            <td>{{ urunKategorisi(urun.kategoriId).ad }}</td>
+          <tr v-for="urun in urunler" :key="urun.UrunID">
+            <td>{{ urun.Ad }}</td>
+            <td>{{ urun.Fiyat }}₺</td>
+            <td>{{ urunKategorisi(urun.KategoriID).Ad }}</td>
             <td>
               <button
                 type="button"
                 class="btn btn-danger btn-sm float-end"
-                @click="sil(urun.id)"
+                @click="sil(urun.UrunID)"
               >
                 Sil
               </button>
@@ -100,11 +100,11 @@ export default {
   data() {
     return {
       urun: {
-        ad: "",
-        fiyat: 0,
-        resim: "https://picsum.photos/300/200?random=" + new Date() * 1,
-        aciklama: "",
-        kategoriId: null,
+        Ad: "",
+        Fiyat: 0,
+        Resim: "https://picsum.photos/300/200?random=" + new Date() * 1,
+        Aciklama: "",
+        KategoriID: null,
       },
       urunler: [],
       kategoriler: [],
@@ -113,7 +113,7 @@ export default {
   methods: {
     urunleriGetir() {
       axios
-        .get("/urunler")
+        .get("/Urun")
         .then((response) => {
           this.urunler = response.data;
         })
@@ -123,7 +123,7 @@ export default {
     },
     kategorileriGetir() {
       axios
-        .get("/kategoriler")
+        .get("/Kategori")
         .then((response) => {
           this.kategoriler = response.data;
         })
@@ -131,28 +131,28 @@ export default {
           console.log(error);
         });
     },
-    urunKategorisi(kategoriId) {
-      var ret = _.find(this.kategoriler, ["id", kategoriId]);
-      if (!ret) ret = { ad: "" };
+    urunKategorisi(KategoriID) {
+      var ret = _.find(this.kategoriler, ["KategoriID", KategoriID]);
+      if (!ret) ret = { Ad: "" };
       return ret;
     },
     kaydet() {
       axios
-        .post("/urunler", {
-          ad: this.urun.ad,
-          fiyat: this.urun.fiyat,
-          resim: this.urun.resim,
-          aciklama: this.urun.aciklama,
-          kategoriId: this.urun.kategoriId,
+        .post("/Urun", {
+          Ad: this.urun.Ad,
+          Fiyat: this.urun.Fiyat,
+          Resim: this.urun.Resim,
+          Aciklama: this.urun.Aciklama,
+          KategoriID: this.urun.KategoriID,
         })
         .then(() => {
           // console.log(response);
           this.urun = {
-            ad: "",
-            fiyat: 0,
-            resim: "https://picsum.photos/300/200?random=" + new Date() * 1,
-            aciklama: "",
-            kategoriId: null,
+            Ad: "",
+            Fiyat: 0,
+            Resim: "https://picsum.photos/300/200?random=" + new Date() * 1,
+            Aciklama: "",
+            KategoriID: null,
           };
           this.urunleriGetir();
         })
@@ -163,7 +163,7 @@ export default {
     sil(id) {
       if (confirm("Silmek istediğinizden emin misiniz?"))
         axios
-          .delete("/urunler/" + id)
+          .delete("/Urun/" + id)
           .then(() => {
             // console.log(response);
             this.urunleriGetir();

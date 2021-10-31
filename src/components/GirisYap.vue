@@ -16,13 +16,13 @@
             <span class="input-group-text">
               E-Posta
             </span>
-            <input type="text" class="form-control" v-model="eposta" />
+            <input type="text" class="form-control" v-model="Eposta" />
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">
               Şifre
             </span>
-            <input type="password" class="form-control" v-model="sifre" />
+            <input type="password" class="form-control" v-model="Sifre" />
           </div>
         </div>
         <div class="card-footer">
@@ -43,8 +43,8 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      eposta: "sistem@admin.com",
-      sifre: "543210",
+      Eposta: "sistem@admin.com",
+      Sifre: "543210",
     };
   },
   methods: {
@@ -52,7 +52,7 @@ export default {
     girisYap() {
       axios
         .get(
-          "/kullanicilar/?eposta=" + this.eposta + "&sifre=" + md5(this.sifre)
+          "/Kullanici?Eposta=" + this.Eposta + "&Sifre=" + md5(this.Sifre)
         )
         .then((r) => {
           if (r.data.length > 0) {

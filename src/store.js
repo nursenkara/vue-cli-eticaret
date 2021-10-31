@@ -23,12 +23,12 @@ const store = createStore({
       const urun = payload;
       if (!Array.isArray(state.girisYapmisKullanici)) {
         let index = state.sepettekiUrunler.findIndex((i) => {
-          return i.id == urun.id;
+          return i.UrunID == urun.UrunID;
         });
         if (index > -1) {
-          state.sepettekiUrunler[index].adet += 1;
+          state.sepettekiUrunler[index].Adet += 1;
         } else {
-          urun.adet = 1;
+          urun.Adet = 1;
           state.sepettekiUrunler.push(urun);
         }
         ls("sepettekiUrunler", state.sepettekiUrunler);
@@ -43,7 +43,7 @@ const store = createStore({
     SepettenCikar(state, urun) {
       if (confirm("Ürünü sepetten çıkarmak istediğinizden emin misiniz?")) {
         let index = state.sepettekiUrunler.findIndex((i) => {
-          return i.id == urun.id;
+          return i.UrunID == urun.UrunID;
         });
         state.sepettekiUrunler.splice(index, 1);
         ls("sepettekiUrunler", state.sepettekiUrunler);
@@ -77,7 +77,7 @@ const store = createStore({
     },
     GetSepettekiToplamUrunSayisi(state) {
       var toplam = 0;
-      state.sepettekiUrunler.map((x) => (toplam += ("0" + x.adet) * 1));
+      state.sepettekiUrunler.map((x) => (toplam += ("0" + x.Adet) * 1));
       return Array.isArray(state.girisYapmisKullanici) ? 0 : toplam;
     },
   },

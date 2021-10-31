@@ -24,7 +24,7 @@ export default {
   },
   created() {
     axios
-      .get("/kategoriler")
+      .get("/Kategori")
       .then((response) => {
         this.kategoriler = response.data;
       })

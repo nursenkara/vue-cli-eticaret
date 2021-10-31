@@ -13,7 +13,7 @@ export default {
       let ret = 0;
       for (let i in this.GetSepettekiUrunler) {
         ret +=
-          this.GetSepettekiUrunler[i].adet * this.GetSepettekiUrunler[i].fiyat;
+          this.GetSepettekiUrunler[i].Adet * this.GetSepettekiUrunler[i].fiyat;
       }
       return ret;
     },
@@ -41,13 +41,13 @@ export default {
           <li
             class="list-group-item d-flex justify-content-between lh-sm"
             v-for="urun in GetSepettekiUrunler"
-            :key="urun.id"
+            :key="urun.UrunID"
           >
             <div>
-              <div class="my-0">{{ urun.ad }}</div>
-              <small class="text-muted">{{ urun.adet }} adet</small>
+              <div class="my-0">{{ urun.Ad }}</div>
+              <small class="text-muted">{{ urun.Adet }} adet</small>
             </div>
-            <span class="text-muted">{{ urun.fiyat }}₺</span>
+            <span class="text-muted">{{ urun.Fiyat }}₺</span>
           </li>
           <li class="list-group-item d-flex justify-content-between">
             <h6 class="my-0">Toplam</h6>

@@ -1,6 +1,6 @@
 <template>
   <div class="row" v-if="urunler.length > 0">
-    <Urun :urun="urun" v-for="urun in urunler" :key="urun.id" />
+    <Urun :urun="urun" v-for="urun in urunler" :key="urun.UrunID" />
   </div>
   <div class="text-center fs-1 m-5 p-5" v-else>
     <span class="one">.</span>
@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Urun from "./Urun";
 import axios from "axios";
+import Urun from "./Urun";
 
 export default {
   props: ["pUrunler"],
@@ -26,7 +26,7 @@ export default {
   mounted() {
     if (this.pUrunler == undefined) {
       axios
-        .get("/urunler")
+        .get("/Urun")
         .then((response) => {
           this.urunler = response.data;
         })

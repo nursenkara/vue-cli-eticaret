@@ -19,31 +19,31 @@
             <span class="input-group-text">
               Ad
             </span>
-            <input type="text" class="form-control" v-model="ad" />
+            <input type="text" class="form-control" v-model="Ad" />
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">
               Soyad
             </span>
-            <input type="text" class="form-control" v-model="soyad" />
+            <input type="text" class="form-control" v-model="Soyad" />
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">
               E-Posta
             </span>
-            <input type="text" class="form-control" v-model="eposta" />
+            <input type="text" class="form-control" v-model="Eposta" />
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">
               Şifre
             </span>
-            <input type="password" class="form-control" v-model="sifre" />
+            <input type="password" class="form-control" v-model="Sifre" />
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">
               Şifre Tekrar
             </span>
-            <input type="password" class="form-control" v-model="sifreTekrar" />
+            <input type="password" class="form-control" v-model="SifreTekrar" />
           </div>
         </div>
         <div class="card-footer" v-if="!kayitBasarili">
@@ -64,25 +64,25 @@ export default {
   data() {
     return {
       kayitBasarili: false,
-      ad: "",
-      soyad: "",
-      eposta: "",
-      sifre: "",
-      sifreTekrar: "",
+      Ad: "",
+      soyAd: "",
+      Eposta: "",
+      Sifre: "",
+      SifreTekrar: "",
     };
   },
   methods: {
     kayitOl() {
-      if (this.sifre != this.sifreTekrar) {
+      if (this.Sifre != this.SifreTekrar) {
         alert("Şifreler eşleşmiyor!");
         return;
       }
       axios
-        .post("/kullanicilar/", {
-          ad: this.ad,
-          soyad: this.soyad,
-          eposta: this.eposta,
-          sifre: md5(this.sifre),
+        .post("/Kullanici", {
+          Ad: this.Ad,
+          soyAd: this.Soyad,
+          Eposta: this.Eposta,
+          Sifre: md5(this.Sifre),
         })
         .then(() => {
           this.kayitBasarili = true;

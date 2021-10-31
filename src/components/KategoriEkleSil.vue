@@ -7,12 +7,12 @@
           <!-- -->
           <div class="input-group mb-3">
             <span class="input-group-text"> Ad </span>
-            <input type="text" v-model="kategori.ad" class="form-control" />
+            <input type="text" v-model="kategori.Ad" class="form-control" />
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text"> URL Yolu (Slug) </span>
             <span class="input-group-text"> / </span>
-            <input type="text" v-model="kategori.slug" class="form-control" />
+            <input type="text" v-model="kategori.Slug" class="form-control" />
           </div>
           <!-- -->
         </template>
@@ -46,14 +46,14 @@
           </tr>
         </thead>
         <tbody v-if="kategoriler.length > 0">
-          <tr v-for="kategori in kategoriler" :key="kategori.id">
-            <td>{{ kategori.ad }}</td>
-            <td>{{ kategori.slug }}</td>
+          <tr v-for="kategori in kategoriler" :key="kategori.KategoriID">
+            <td>{{ kategori.Ad }}</td>
+            <td>{{ kategori.Slug }}</td>
             <td>
               <button
                 type="button"
                 class="btn btn-danger btn-sm float-end"
-                @click="sil(kategori.id)"
+                @click="sil(kategori.KategoriID)"
               >
                 Sil
               </button>
@@ -76,8 +76,8 @@ export default {
   data() {
     return {
       kategori: {
-        ad: "",
-        slug: "",
+        Ad: "",
+        Slug: "",
       },
       kategoriler: [],
     };
@@ -85,7 +85,7 @@ export default {
   methods: {
     kategorileriGetir() {
       axios
-        .get("/kategoriler")
+        .get("/Kategori")
         .then((response) => {
           this.kategoriler = response.data;
         })
@@ -95,15 +95,15 @@ export default {
     },
     kaydet() {
       axios
-        .post("/kategoriler", {
-          ad: this.kategori.ad,
-          slug: ("/" + this.kategori.slug).replace("//", "/"),
+        .post("/Kategori", {
+          Ad: this.kategori.Ad,
+          Slug: ("/" + this.kategori.Slug).replace("//", "/"),
         })
         .then(() => {
           // console.log(response);
           this.kategori = {
-            ad: "",
-            slug: "",
+            Ad: "",
+            Slug: "",
           };
           this.kategorileriGetir();
         })
@@ -114,7 +114,7 @@ export default {
     sil(id) {
       if (confirm("Silmek istediğinizden emin misiniz?"))
         axios
-          .delete("/kategoriler/" + id)
+          .delete("/Kategori/" + id)
           .then(() => {
             // console.log(response);
             this.kategorileriGetir();

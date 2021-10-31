@@ -8,7 +8,7 @@ import mitt from "mitt";
 import "toastr/build/toastr.min.css";
 import store from "./store";
 
-axios.defaults.baseURL = "https://json-server-db1.herokuapp.com";
+axios.defaults.baseURL = "http://localhost:1243";
 const emitter = mitt();
 
 const app = createApp(App);

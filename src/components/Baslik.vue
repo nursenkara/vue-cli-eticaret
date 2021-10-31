@@ -51,12 +51,12 @@
           </a>
         </li>
 
-        <li v-for="kategori in kategoriler" class="nav-item" :key="kategori.id">
+        <li v-for="kategori in kategoriler" class="nav-item" :key="kategori.KategoriID">
           <a
             href="javascript:void(0)"
-            @click="$router.push('/kategori' + kategori.slug)"
+            @click="$router.push('/kategori' + kategori.Slug)"
             class="nav-link link-dark px-2"
-            >{{ kategori.ad }}</a
+            >{{ kategori.Ad }}</a
           >
         </li>
       </ul>
@@ -86,11 +86,11 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              {{ GetGirisYapmisKullanici.ad }}
-              {{ GetGirisYapmisKullanici.soyad }}
+              {{ GetGirisYapmisKullanici.Ad }}
+              {{ GetGirisYapmisKullanici.Soyad }}
             </button>
             <ul class="dropdown-menu" aria-labelledby="kullaniciDropdown">
-              <li v-if="GetGirisYapmisKullanici.rol == 'admin'">
+              <li v-if="GetGirisYapmisKullanici.Rol == 'admin'">
                 <a
                   class="dropdown-item"
                   href="javascript:void(0);"

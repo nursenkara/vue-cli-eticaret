@@ -21,26 +21,25 @@ export default {
   },
   created() {
     axios
-      .get("/kategoriler")
+      .get("/Kategori")
       .then((response) => {
         var kategoriler = response.data;
-
-        var kategori = _.find(kategoriler, ["slug", "/" + this.kategoriSlug]);
+        var kategori = _.find(kategoriler, ["Slug", "/" + this.kategoriSlug]);
         if (typeof kategori == "object") {
-          var kategoriId = kategori.id;
+          var KategoriID = kategori.KategoriID;
           /* Kategori ID'den ürünleri getir */
           axios
-            .get("/urunler?kategoriId=" + kategoriId)
+            .get("/Urun?KategoriID=" + KategoriID)
             .then((response2) => {
               this.urunler = response2.data;
             })
-            .catch(function (error) {
+            .catch(function(error) {
               console.log(error);
             });
           /**/
         }
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   },

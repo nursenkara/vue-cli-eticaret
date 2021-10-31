@@ -16,14 +16,14 @@
             </tr>
           </thead>
           <tbody v-if="GetSepettekiUrunler.length > 0">
-            <tr v-for="urun in GetSepettekiUrunler" :key="urun.id">
-              <td>{{ urun.ad }}</td>
-              <td>{{ urun.fiyat }}₺</td>
+            <tr v-for="urun in GetSepettekiUrunler" :key="urun.UrunID">
+              <td>{{ urun.Ad }}</td>
+              <td>{{ urun.Fiyat }}₺</td>
               <td>
                 <input
                   class="form-control"
                   type="number"
-                  v-model="urun.adet"
+                  v-model="urun.Adet"
                   step="1"
                   min="1"
                 />
